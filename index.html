@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add('js');</script>
   <style>
-    :root { --paper:#f2f1eb; --ink:#080808; --muted:#63635e; --accent:#ff4b23; --purple:#7257e8; --white:#fff; --line:rgba(8,8,8,.18); --pad:clamp(1rem,3vw,2.75rem); --radius:clamp(1.15rem,2vw,1.5rem); --section:clamp(4rem,8vw,7.5rem); --ease:cubic-bezier(.2,.75,.2,1); --dur-card:600ms; --dur-quick:350ms; }
+    :root { --paper:#f2f1eb; --ink:#080808; --muted:#63635e; --accent:#ff4b23; --purple:#7257e8; --white:#fff; --line:rgba(8,8,8,.18); --pad:clamp(1rem,3vw,2.75rem); --radius:clamp(1.15rem,2vw,1.5rem); --section:clamp(4rem,8vw,7.5rem); --ease:cubic-bezier(.2,.75,.2,1); --ease-out:cubic-bezier(.16,1,.3,1); --dur-card:600ms; --dur-quick:350ms; }
     * { box-sizing:border-box; }
     html { scroll-behavior:smooth; background:var(--paper); }
     body { margin:0; min-width:300px; overflow-x:hidden; color:var(--ink); background:var(--paper); font-family:"Inter Tight",Arial,sans-serif; -webkit-font-smoothing:antialiased; }
@@ -46,11 +46,11 @@
     .scroll-progress { position:absolute; right:0; bottom:-1px; left:0; height:2px; overflow:hidden; pointer-events:none; }
     .scroll-progress span { display:block; width:100%; height:100%; background:var(--accent); transform:scaleX(var(--page-progress,0)); transform-origin:left; will-change:transform; }
 
-    .hero { padding:clamp(1.5rem,3.2vw,3.4rem) var(--pad) 0; }
+    .hero { padding:clamp(3rem,4.5vw,4rem) var(--pad) clamp(3rem,4.5vw,4.5rem); }
     .hero-heading { display:grid; grid-template-columns:1fr auto; align-items:end; gap:1rem; margin-bottom:clamp(1rem,2vw,1.6rem); }
     .hero-heading h1 { margin:0; font-size:clamp(4.5rem,10vw,8.8rem); line-height:.84; letter-spacing:-.07em; font-weight:600; transform:translate3d(0,var(--hero-title-y,0),0); will-change:transform; }
     .hero-heading p { max-width:17rem; margin:0 0 .65rem; color:var(--muted); font-size:clamp(.95rem,1.5vw,1.15rem); line-height:1.35; text-align:right; }
-    .hero-panel { position:relative; height:clamp(350px,30vw,400px); display:grid; grid-template-columns:.82fr 1.18fr; overflow:hidden; border-radius:var(--radius); color:var(--white); background:var(--ink); }
+    .hero-panel { position:relative; height:clamp(340px,min(30vw,52vh),400px); display:grid; grid-template-columns:.82fr 1.18fr; overflow:hidden; border-radius:var(--radius); color:var(--white); background:var(--ink); }
     .hero-copy { position:relative; z-index:2; min-height:0; display:flex; flex-direction:column; justify-content:space-between; padding:clamp(1.4rem,3vw,2.8rem); }
     .role-line { display:flex; align-items:center; gap:.7rem; color:rgba(255,255,255,.68); }
     .role-line::before { content:""; width:2.2rem; height:1px; background:var(--accent); }
@@ -117,26 +117,24 @@
     .kwickly { --project-tint:#dfdbff; }
     .bromart { --project-tint:#efe4bb; }
     .health { --project-tint:#cfe3e8; }
-    .motion-ready .project .project-media { opacity:0; transform:translate3d(-34px,26px,0) scale(.975); transition:opacity .7s cubic-bezier(.2,.75,.2,1),transform .8s cubic-bezier(.2,.75,.2,1); }
-    .motion-ready .project:nth-child(even) .project-media { transform:translate3d(34px,26px,0) scale(.975); }
-    .motion-ready .project .project-copy>* { opacity:0; transform:translate3d(0,22px,0); transition:opacity .55s cubic-bezier(.2,.75,.2,1),transform .65s cubic-bezier(.2,.75,.2,1); }
-    .motion-ready .project .project-copy>*:nth-child(2) { transition-delay:.08s; }
-    .motion-ready .project .project-copy>*:nth-child(3) { transition-delay:.14s; }
-    .motion-ready .project .project-copy>*:nth-child(4) { transition-delay:.2s; }
-    .motion-ready .project .project-copy>*:nth-child(5) { transition-delay:.26s; }
+    .motion-ready .project .project-media { opacity:0; transform:translate3d(-26px,20px,0) scale(.985); transition:opacity var(--dur-card) var(--ease-out),transform var(--dur-card) var(--ease-out); }
+    .motion-ready .project:nth-child(even) .project-media { transform:translate3d(26px,20px,0) scale(.985); }
+    .motion-ready .project .project-copy { opacity:0; transform:translate3d(0,18px,0); transition:opacity var(--dur-card) var(--ease-out),transform var(--dur-card) var(--ease-out); transition-delay:.11s; }
     .motion-ready .project.project-in .project-media { opacity:1; transform:none; }
-    .motion-ready .project.project-in .project-copy>* { opacity:1; transform:none; }
+    .motion-ready .project.project-in .project-copy { opacity:1; transform:none; }
 
     .experience { display:grid; grid-template-columns:.72fr 1.28fr; gap:clamp(2rem,6vw,7rem); background:var(--ink); color:var(--white); }
     .experience-intro { align-self:start; position:sticky; top:7rem; }
     .experience-intro h2 { max-width:8ch; margin:.9rem 0 1.3rem; font-size:clamp(3rem,5.4vw,5.4rem); line-height:.9; letter-spacing:-.06em; font-weight:500; }
     .experience-intro p { max-width:25rem; color:#9f9f9f; line-height:1.6; }
-    .timeline { border-top:1px solid #363636; }
+    .timeline { position:relative; border-top:1px solid #363636; }
+    .timeline::after { content:""; position:absolute; top:0; left:0; width:2px; height:calc(var(--timeline-progress,0) * 100%); border-radius:2px; background:var(--accent); opacity:.5; transition:height var(--dur-card) var(--ease); }
     .timeline-item { position:relative; display:grid; grid-template-columns:7.5rem 1fr; gap:1rem; padding:1.8rem 0 1.8rem 1rem; border-bottom:1px solid #363636; opacity:.46; transition:opacity .4s ease,transform .45s cubic-bezier(.2,.75,.2,1),background .4s ease; }
     .timeline-item::before { content:""; position:absolute; top:1.8rem; bottom:1.8rem; left:0; width:2px; border-radius:2px; background:#363636; transform:scaleY(.25); transform-origin:top; transition:transform .45s ease,background .35s ease; }
     .timeline-item.active { opacity:1; transform:translateX(.55rem); background:linear-gradient(90deg,rgba(255,75,35,.09),transparent 68%); }
     .timeline-item.active::before { background:var(--accent); transform:scaleY(1); }
-    .timeline-item time { color:var(--accent); font:.68rem/1.6 "Roboto Mono",monospace; text-transform:uppercase; }
+    .timeline-item time { color:#8c8c8c; font:.68rem/1.6 "Roboto Mono",monospace; text-transform:uppercase; transition:color var(--dur-quick) ease; }
+    .timeline-item.active time { color:var(--accent); }
     .timeline-item h3 { margin:0 0 .35rem; font-size:clamp(1.45rem,2.5vw,2.3rem); font-weight:500; letter-spacing:-.035em; }
     .timeline-item strong { display:block; margin-bottom:.7rem; color:#c5c5c5; font-weight:500; }
     .timeline-item p { max-width:40rem; margin:0; color:#8c8c8c; line-height:1.6; }
@@ -160,13 +158,16 @@
     .cap-list { max-width:70rem; margin-left:auto; }
     .capability { border-top:1px solid #363636; }
     .capability:last-child { border-bottom:1px solid #363636; }
-    .capability summary { display:grid; grid-template-columns:2rem 1fr auto; gap:1rem; align-items:center; padding:1.2rem 0; cursor:pointer; list-style:none; }
+    .capability summary { display:grid; grid-template-columns:2rem 1fr auto; gap:1rem; align-items:center; padding:1.2rem 0; cursor:pointer; list-style:none; transition:background var(--dur-quick) ease; }
+    .capability summary:hover { background:rgba(255,255,255,.05); }
+    .capability summary:focus-visible { background:rgba(255,255,255,.08); }
     .capability summary::-webkit-details-marker { display:none; }
     .capability summary>span { display:grid; place-items:center; width:1.4rem; height:1.4rem; border-radius:50%; background:var(--accent); font:.62rem "Roboto Mono",monospace; }
     .capability h3 { margin:0; font-size:clamp(1.45rem,2.7vw,2.5rem); font-weight:500; letter-spacing:-.035em; }
-    .capability summary::after { content:"+"; color:#aaa; font-size:1.8rem; }
-    .capability[open] summary::after { content:"−"; }
-    .cap-body { display:grid; grid-template-columns:1fr 1fr; gap:2rem; padding:.4rem 0 1.8rem 3rem; }
+    .capability summary::after { content:"+"; color:#aaa; font-size:1.8rem; line-height:1; transition:transform var(--dur-quick) var(--ease),color var(--dur-quick) ease; }
+    .capability[open] summary::after { content:"−"; transform:rotate(180deg); color:var(--white); }
+    .cap-body { display:grid; grid-template-columns:1fr 1fr; gap:2rem; padding:.4rem 0 1.8rem 3rem; transition:height var(--dur-card) var(--ease),opacity calc(var(--dur-card) - .1s) ease,padding calc(var(--dur-card) - .15s) ease; }
+    .capability.is-animating .cap-body { overflow:hidden; }
     .cap-tags { display:flex; flex-wrap:wrap; align-content:start; gap:.45rem; }
     .cap-tags span { padding:.5rem .7rem; border-radius:999px; color:#bbb; background:#1f1f1f; font-size:.75rem; }
     .cap-body p { margin:0; color:#999; line-height:1.6; }
@@ -218,7 +219,7 @@
       :root { --pad:.85rem; --section:4rem; }
       .site-header { grid-template-columns:1fr auto; min-height:3.8rem; }
       .nav { display:none; }
-      .hero { padding-top:1.4rem; }
+      .hero { padding-top:clamp(1.5rem,6vw,2rem); padding-bottom:clamp(2rem,7vw,3rem); }
       .hero-heading { display:block; margin-bottom:.8rem; }
       .hero-heading h1 { max-width:6ch; font-size:clamp(4.1rem,19vw,4.8rem); line-height:.88; transform:none; }
       .hero-heading p { margin:.7rem 0 0; text-align:left; }
@@ -244,9 +245,9 @@
       .project-facts dd { font-size:.84rem; line-height:1.35; }
       .project-facts .mobile-hide { display:none; }
       .project-actions { margin-top:.85rem; }
-      .project-actions .button { min-height:2.5rem; }
+      .project-actions .button { min-height:var(--tap,2.75rem); }
       .motion-ready .project .project-media,.motion-ready .project:nth-child(even) .project-media { transform:translateY(16px); transition-duration:.45s; }
-      .motion-ready .project .project-copy>* { transform:translateY(14px); transition-duration:.42s; }
+      .motion-ready .project .project-copy { transform:translateY(14px); transition-duration:.42s; transition-delay:.09s; }
       .js .reveal[data-reveal="left"],.js .reveal[data-reveal="right"] { transform:translateY(14px); }
       .timeline-item.active { transform:translateX(.25rem); }
       .experience { padding-inline:1rem; }
@@ -272,7 +273,7 @@
       .footer-links { justify-content:flex-start; }
       .footer-bottom { flex-direction:column; }
     }
-    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { scroll-behavior:auto!important; transition-duration:.01ms!important; } .js .reveal,.motion-ready .project .project-media,.motion-ready .project .project-copy>* { opacity:1; transform:none; clip-path:inset(0); } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { scroll-behavior:auto!important; transition-duration:.01ms!important; } .js .reveal,.motion-ready .project .project-media,.motion-ready .project .project-copy { opacity:1; transform:none; clip-path:inset(0); } }
   </style>
 </head>
 <body>
@@ -373,7 +374,7 @@
       document.getElementById('year').textContent = new Date().getFullYear();
       const root = document.documentElement;
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-      const desktopMotion = window.matchMedia('(min-width: 681px)');
+      const desktopMotion = window.matchMedia('(min-width: 681px) and (pointer: fine)');
       const revealItems = document.querySelectorAll('.reveal');
       const projects = [...document.querySelectorAll('.project')];
       const stages = [...document.querySelectorAll('.timeline-item')];
@@ -414,43 +415,16 @@
         const maxScroll = Math.max(1, root.scrollHeight - viewportHeight);
         root.style.setProperty('--page-progress', (window.scrollY / maxScroll).toFixed(4));
 
-        let current = sections[0];
-        sections.forEach((section) => {
-          if (section.getBoundingClientRect().top <= viewportHeight * .42) current = section;
-        });
-        if (current) {
-          sectionLabel.textContent = current.dataset.section;
-          navLinks.forEach((link) => {
-            const active = link.getAttribute('href') === `#${current.id}`;
-            link.classList.toggle('active', active);
-            if (active) link.setAttribute('aria-current', 'location');
-            else link.removeAttribute('aria-current');
-          });
-        }
-
-        if (stages.length) {
-          const focusLine = viewportHeight * .52;
-          let activeStage = stages[0];
-          let smallestDistance = Infinity;
-          stages.forEach((stage) => {
-            const rect = stage.getBoundingClientRect();
-            const distance = Math.abs(rect.top + rect.height * .5 - focusLine);
-            if (distance < smallestDistance) {
-              smallestDistance = distance;
-              activeStage = stage;
-            }
-          });
-          stages.forEach((stage) => stage.classList.toggle('active', stage === activeStage));
-        }
+        // Nav active state + section label + timeline progress driven by IntersectionObserver
 
         if (!reduceMotion.matches && desktopMotion.matches) {
           const hero = document.querySelector('.hero');
           const heroRect = hero.getBoundingClientRect();
           const heroProgress = clamp(-heroRect.top / Math.max(1, heroRect.height * .78), 0, 1);
-          root.style.setProperty('--hero-title-y', `${(-heroProgress * 16).toFixed(2)}px`);
-          root.style.setProperty('--hero-copy-y', `${(-heroProgress * 24).toFixed(2)}px`);
-          root.style.setProperty('--hero-image-y', `${(heroProgress * 34).toFixed(2)}px`);
-          root.style.setProperty('--hero-badge-y', `${(-heroProgress * 18).toFixed(2)}px`);
+          root.style.setProperty('--hero-title-y', `${(-heroProgress * 10).toFixed(2)}px`);
+          root.style.setProperty('--hero-copy-y', `${(-heroProgress * 10).toFixed(2)}px`);
+          root.style.setProperty('--hero-image-y', `${(heroProgress * 22).toFixed(2)}px`);
+          root.style.setProperty('--hero-badge-y', `${(-heroProgress * 10).toFixed(2)}px`);
 
           projects.forEach((project) => {
             const rect = project.getBoundingClientRect();
@@ -468,6 +442,78 @@
         framePending = false;
       };
 
+      // --- Active nav + section label via IntersectionObserver (keyboard-friendly:
+      // anchor focus/click scrolls the section into the observed band and the state follows).
+      if ('IntersectionObserver' in window) {
+        const setActiveSection = (section) => {
+          sectionLabel.textContent = section.dataset.section;
+          navLinks.forEach((link) => {
+            const active = link.getAttribute('href') === `#${section.id}`;
+            link.classList.toggle('active', active);
+            if (active) link.setAttribute('aria-current', 'location');
+            else link.removeAttribute('aria-current');
+          });
+        };
+        // Track which observed sections currently intersect the active band.
+        const visible = new Set();
+        const navObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            const id = entry.target.id;
+            if (entry.isIntersecting) visible.add(id); else visible.delete(id);
+          });
+          if (visible.size) {
+            // Pick the section whose top is highest in the viewport among visible ones.
+            let best = null;
+            sections.forEach((section) => {
+              if (visible.has(section.id) && section.getBoundingClientRect().top < (best ? best.getBoundingClientRect().top : Infinity)) best = section;
+            });
+            if (best) setActiveSection(best);
+          }
+        }, { rootMargin: '-20% 0px -55% 0px', threshold: 0 });
+        sections.forEach((section) => navObserver.observe(section));
+
+        // --- Timeline active item + continuous vertical progress (IO, no scroll math per frame)
+        if (stages.length) {
+          const stageVisible = new Set();
+          const pickActiveStage = () => {
+            const focus = window.innerHeight * .5;
+            let best = null;
+            let bestDistance = Infinity;
+            stages.forEach((stage) => {
+              if (!stageVisible.has(stage)) return;
+              const rect = stage.getBoundingClientRect();
+              const distance = Math.abs(rect.top + rect.height * .5 - focus);
+              if (distance < bestDistance) { bestDistance = distance; best = stage; }
+            });
+            stages.forEach((stage) => stage.classList.toggle('active', stage === best));
+          };
+          const stageObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) stageVisible.add(entry.target); else stageVisible.delete(entry.target);
+            });
+            pickActiveStage();
+          }, { rootMargin: '-42% 0px -42% 0px', threshold: 0 });
+          stages.forEach((stage) => stageObserver.observe(stage));
+
+          const track = stages[0].parentElement;
+          const updateTimelineProgress = () => {
+            const trackRect = track.getBoundingClientRect();
+            const focus = window.innerHeight * .5;
+            const ratio = clamp((focus - trackRect.top) / Math.max(1, trackRect.height), 0, 1);
+            track.style.setProperty('--timeline-progress', ratio.toFixed(3));
+          };
+          const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              updateTimelineProgress();
+            });
+          }, { threshold: 0 });
+          stages.forEach((stage) => progressObserver.observe(stage));
+          track.style.setProperty('--timeline-progress', '0');
+          updateTimelineProgress();
+        }
+      }
+
       const requestScrollUpdate = () => {
         if (framePending) return;
         framePending = true;
@@ -478,6 +524,73 @@
       desktopMotion.addEventListener('change', requestScrollUpdate);
       reduceMotion.addEventListener('change', requestScrollUpdate);
       requestScrollUpdate();
+
+      // --- Capabilities accordion: animated open/close (height+opacity), one open at a time.
+      const capabilities = [...document.querySelectorAll('.capability')];
+      if (capabilities.length) {
+        const animateClose = (details) => {
+          const body = details.querySelector('.cap-body');
+          if (!body) { details.removeAttribute('open'); return; }
+          details.classList.add('is-animating');
+          body.style.height = `${body.offsetHeight}px`;
+          body.style.opacity = '1';
+          requestAnimationFrame(() => {
+            body.style.height = '0px';
+            body.style.opacity = '0';
+            body.style.paddingTop = '0';
+            body.style.paddingBottom = '0';
+          });
+          const onClosed = (event) => {
+            if (event.propertyName !== 'height') return;
+            body.removeEventListener('transitionend', onClosed);
+            details.removeAttribute('open');
+            details.classList.remove('is-animating');
+            body.style.height = ''; body.style.opacity = '';
+            body.style.paddingTop = ''; body.style.paddingBottom = '';
+          };
+          body.addEventListener('transitionend', onClosed);
+        };
+        const animateOpen = (details) => {
+          const body = details.querySelector('.cap-body');
+          if (!body) { details.setAttribute('open', ''); return; }
+          details.setAttribute('open', '');
+          details.classList.add('is-animating');
+          const target = body.offsetHeight;
+          body.style.height = '0px';
+          body.style.opacity = '0';
+          body.style.paddingTop = '0';
+          body.style.paddingBottom = '0';
+          requestAnimationFrame(() => {
+            body.style.height = `${target}px`;
+            body.style.opacity = '1';
+            body.style.paddingTop = '';
+            body.style.paddingBottom = '';
+          });
+          const onOpen = (event) => {
+            if (event.propertyName !== 'height') return;
+            body.removeEventListener('transitionend', onOpen);
+            details.classList.remove('is-animating');
+            body.style.height = ''; body.style.opacity = '';
+          };
+          body.addEventListener('transitionend', onOpen);
+        };
+        capabilities.forEach((details) => {
+          details.addEventListener('click', (event) => {
+            // Intercept summary clicks to animate instead of snapping; keep one open at a time.
+            if (!event.target.closest('summary')) return;
+            event.preventDefault();
+            if (details.classList.contains('is-animating')) return;
+            if (details.open) {
+              animateClose(details);
+            } else {
+              capabilities.forEach((other) => {
+                if (other !== details && other.open) animateClose(other);
+              });
+              animateOpen(details);
+            }
+          });
+        });
+      }
     })();
   </script>
 </body>
